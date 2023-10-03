@@ -18,13 +18,11 @@ int main() {
     setup();
     int grid[ROWS][COLS];
     initializeGrid(grid);
-    int time = 10000000;
-    printGrid(grid);
-    usleep(time);
 
     FILE *f;
     f = freopen("/dev/tty", "r", stdin);
 
+    int time = 100000;
     int gen = 0;
     while (1) {
         clear();
@@ -33,7 +31,7 @@ int main() {
         int newGrid[ROWS][COLS] = {0};
         updateGrid(grid, newGrid);
         gen++;
-        //check_end(grid, newGrid, gen);
+        check_end(grid, newGrid, gen);
         copy(grid, newGrid);
         char c = getch();
         getkey(&time, c, gen);
